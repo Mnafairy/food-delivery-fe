@@ -1,7 +1,4 @@
 import Head from "next/head";
-import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
-
 const Home = () => {
   return (
     <>
@@ -12,18 +9,18 @@ const Home = () => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <main>
-        <Button
-          disableRipple
-          variant="text"
-          sx={{
-            ":hover": {
-              bgcolor: "transparent",
-              color: "green ",
-            },
-          }}
-        >
-          Нүүр
-        </Button>
+        {/* <Button
+        disableRipple
+        variant="text"
+        sx={{
+          ":hover": {
+            bgcolor: "transparent",
+            color: "green ",
+          },
+        }}
+      >
+        Нүүр
+      </Button> */}
       </main>
     </>
   );

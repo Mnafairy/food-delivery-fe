@@ -1,14 +1,10 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  InputBase,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import AdbIcon from "@mui/icons-material/Adb";
+import { Box, Button, InputBase, Stack, Typography } from "@mui/material";
+import Logo from "./icons/Logo";
+import SearchIcon from "./icons/SearchIcon";
+import BasketIcon from "./icons/BasketIcon";
+import ProfileIcon from "./icons/ProfileIcon";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,36 +49,55 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
+  // const [active, setActive] = useState(menu);
+  const menu = [
+    {
+      id: 1,
+      title: "НҮҮР",
+    },
+    {
+      id: 2,
+      title: "ХООЛНЫ ЦЭС",
+    },
+    {
+      id: 3,
+      title: "ХҮРГЭЛТИЙН БҮС",
+    },
+  ];
+  // const handleSubmit = () => {
+  //   setActive();
+  // };
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            НҮҮР
-          </Typography>
+    <Stack
+      width="1258px"
+      height="72px"
+      direction="row"
+      px={3}
+      py={1}
+      sx={{ flexGrow: 1 }}
+      justifyContent="space-between"
+    >
+      <Stack direction={"row"} alignContent="center" gap={6}>
+        <Box width="41px" height="41px" px="4.87px" py="7.18px">
+          <Logo />
+        </Box>
+        <Stack
+          direction="row"
+          gap={2}
+          fontSize="14px"
+          fontWeight={700}
+          alignItems={"center"}
+          justifyItems={"center"}
+        >
+          {menu.map((e, key) => (
+            <Typography fontSize="14px" fontWeight={700} key={key}>
+              {e.title}
+            </Typography>
+          ))}
+        </Stack>
+      </Stack>
+      <Stack direction="row" gap={2}>
+        <Box width={260} height={40}>
           <Search sx={{ border: 1, borderColor: "black" }}>
             <SearchIconWrapper>
               <SearchIcon />
@@ -92,13 +107,34 @@ export const Header = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </Box>
+        <Stack
+          direction="row"
+          gap={1}
+          px={2}
+          py={1}
+          alignItems={"center"}
+          justifyItems={"center"}
+        >
+          <BasketIcon />
+          <Typography fontSize="14px" fontWeight={700}>
+            Сагс
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          gap={1}
+          px={2}
+          py={1}
+          alignItems={"center"}
+          justifyItems={"center"}
+        >
+          <ProfileIcon />
+          <Typography fontSize="14px" fontWeight={700}>
+            Нэвтрэх
+          </Typography>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 };
-// export const Header = () => (
-//   <Box>
-//     <Stack>header</Stack>
-//   </Box>
-// );
