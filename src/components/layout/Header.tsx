@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import { Box, Container, InputBase, Stack, Typography } from "@mui/material";
-import { Logo, SearchIcon, BasketIcon, ProfileIcon } from "./icons/";
+import { Logo, SearchIcon, BasketIcon, ProfileIcon } from "../icons";
 import { useState } from "react";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -45,7 +45,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState<number>(1);
   const menu = [
     {
       id: 1,
@@ -70,7 +70,7 @@ export const Header = () => {
       title: "Нэвтрэх",
     },
   ];
-  const handleSubmit = (id) => {
+  const handleSubmit = (id: number) => {
     setActive(id);
   };
   return (

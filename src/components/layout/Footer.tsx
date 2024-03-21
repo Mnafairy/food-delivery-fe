@@ -5,7 +5,7 @@ import {
   Logo,
   TwitterIcon,
   FooterBg,
-} from "./icons";
+} from "../icons";
 export const Footer = () => (
   <Box width="100%" height={545} bgcolor={"#18BA51"} position={"relative"}>
     <Container>

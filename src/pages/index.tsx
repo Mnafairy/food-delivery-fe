@@ -9,18 +9,6 @@ const Home = () => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <main>
-        {/* <Button
-        disableRipple
-        variant="text"
-        sx={{
-          ":hover": {
-            bgcolor: "transparent",
-            color: "green ",
-          },
-        }}
-      >
-        Нүүр
-      </Button> */}
       </main>
     </>
   );
