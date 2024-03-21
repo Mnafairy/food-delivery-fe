@@ -1,11 +1,8 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import { Box, Button, InputBase, Stack, Typography } from "@mui/material";
-import Logo from "./icons/Logo";
-import SearchIcon from "./icons/SearchIcon";
-import BasketIcon from "./icons/BasketIcon";
-import ProfileIcon from "./icons/ProfileIcon";
-
+import { Box, Container, InputBase, Stack, Typography } from "@mui/material";
+import { Logo, SearchIcon, BasketIcon, ProfileIcon } from "./icons/";
+import { useState } from "react";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: 8,
@@ -36,7 +33,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
@@ -49,7 +45,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
-  // const [active, setActive] = useState(menu);
+  const [active, setActive] = useState(1);
   const menu = [
     {
       id: 1,
@@ -64,77 +60,93 @@ export const Header = () => {
       title: "ХҮРГЭЛТИЙН БҮС",
     },
   ];
-  // const handleSubmit = () => {
-  //   setActive();
-  // };
+  const menuRight = [
+    {
+      icon: <BasketIcon />,
+      title: "Сагс",
+    },
+    {
+      icon: <ProfileIcon />,
+      title: "Нэвтрэх",
+    },
+  ];
+  const handleSubmit = (id) => {
+    setActive(id);
+  };
   return (
-    <Stack
-      width="1258px"
-      height="72px"
-      direction="row"
-      px={3}
-      py={1}
-      sx={{ flexGrow: 1 }}
-      justifyContent="space-between"
-    >
-      <Stack direction={"row"} alignContent="center" gap={6}>
-        <Box width="41px" height="41px" px="4.87px" py="7.18px">
-          <Logo />
-        </Box>
+    <Container>
+      <Stack alignItems={"center"} justifyItems={"center"}>
         <Stack
+          width="1258px"
+          height="57px"
           direction="row"
-          gap={2}
-          fontSize="14px"
-          fontWeight={700}
-          alignItems={"center"}
-          justifyItems={"center"}
+          px={3}
+          py={1}
+          justifyContent="space-between"
         >
-          {menu.map((e, key) => (
-            <Typography fontSize="14px" fontWeight={700} key={key}>
-              {e.title}
-            </Typography>
-          ))}
+          <Stack direction={"row"} alignItems="center" gap={3}>
+            <Box width="41px" height="41px" px="4.87px" py="7.18px">
+              <Logo color="black" />
+            </Box>
+            <Stack
+              direction="row"
+              gap={1}
+              fontSize="14px"
+              fontWeight={700}
+              alignItems={"center"}
+              justifyItems={"center"}
+            >
+              {menu.map((e, key) => (
+                <Typography
+                  fontSize="14px"
+                  fontWeight={700}
+                  px={2}
+                  py={1}
+                  key={key}
+                  onClick={() => handleSubmit(e.id)}
+                  sx={{
+                    color: active === e.id ? "#18BA51" : "black",
+                    cursor: "pointer",
+                  }}
+                >
+                  {e.title}
+                </Typography>
+              ))}
+            </Stack>
+          </Stack>
+          <Stack direction="row" gap={2}>
+            <Box width={260} height={40}>
+              <Search sx={{ border: 1, borderColor: "black" }}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Хайх"
+                  // inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Box>
+            {menuRight.map((e, key) => (
+              <Stack
+                key={key}
+                direction="row"
+                gap={1}
+                px={2}
+                py={1}
+                alignItems={"center"}
+                sx={{
+                  cursor: "pointer",
+                }}
+              >
+                {e.icon}
+                <Typography fontSize="14px" fontWeight={700}>
+                  {e.title}
+                </Typography>
+              </Stack>
+            ))}
+          </Stack>
         </Stack>
       </Stack>
-      <Stack direction="row" gap={2}>
-        <Box width={260} height={40}>
-          <Search sx={{ border: 1, borderColor: "black" }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Хайх"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </Box>
-        <Stack
-          direction="row"
-          gap={1}
-          px={2}
-          py={1}
-          alignItems={"center"}
-          justifyItems={"center"}
-        >
-          <BasketIcon />
-          <Typography fontSize="14px" fontWeight={700}>
-            Сагс
-          </Typography>
-        </Stack>
-        <Stack
-          direction="row"
-          gap={1}
-          px={2}
-          py={1}
-          alignItems={"center"}
-          justifyItems={"center"}
-        >
-          <ProfileIcon />
-          <Typography fontSize="14px" fontWeight={700}>
-            Нэвтрэх
-          </Typography>
-        </Stack>
-      </Stack>
-    </Stack>
+    </Container>
   );
 };

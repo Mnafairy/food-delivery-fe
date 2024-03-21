@@ -1,4 +1,4 @@
-const BasketIcon = () => (
+export const BasketIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -12,4 +12,3 @@ const BasketIcon = () => (
     />
   </svg>
 );
-export default BasketIcon;
