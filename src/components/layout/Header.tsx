@@ -43,7 +43,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
 export const Header = () => {
   const [active, setActive] = useState<number>(1);
   const menu = [
@@ -126,9 +125,9 @@ export const Header = () => {
                 />
               </Search>
             </Box>
-            {menuRight.map((e, key) => (
+            {menuRight.map((e, index) => (
               <Stack
-                key={key}
+                key={index}
                 direction="row"
                 gap={1}
                 px={2}

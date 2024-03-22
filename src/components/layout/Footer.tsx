@@ -7,21 +7,20 @@ import {
   FooterBg,
 } from "../icons";
 export const Footer = () => (
-  <Box width="100%" height={545} bgcolor={"#18BA51"} position={"relative"}>
+  <Box
+    width="100%"
+    height={545}
+    bgcolor={"#18BA51"}
+    sx={{ backgroundImage: "bgFood.svg" }}
+    position={"relative"}
+  >
     <Container>
-      <Stack
-        position={"absolute"}
-        zIndex={1000}
-        left={250}
-        alignItems={"center"}
-        justifyItems={"center"}
-      >
+      {/* <Stack position={"absolute"} left={330}>
         <FooterBg />
-      </Stack>
+      </Stack> */}
       <Stack
         top={114}
         position={"absolute"}
-        zIndex={1500}
         width={1200}
         gap={5}
         alignItems={"center"}
