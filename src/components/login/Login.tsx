@@ -17,8 +17,10 @@ export const Login = () => {
   //     email: e.target.email.value,
   //   };
   // };
+  const [buttonColor, setButtonColor] = useState("gray");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -26,8 +28,21 @@ export const Login = () => {
   ) => {
     event.preventDefault();
   };
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+    setButtonColor(event.target.value ? "#18BA51" : "gray");
+  };
   return (
-    <Stack p={4} gap={6} alignItems={"center"}>
+    <Stack
+      height={"570px"}
+      width={"450px"}
+      p={4}
+      gap={6}
+      border={1}
+      borderRadius={4}
+      borderColor={"white"}
+      alignItems={"center"}
+    >
       <Typography fontSize={"28px"} fontWeight={700} color={"#0D1118"}>
         Нэвтрэх
       </Typography>
@@ -44,8 +59,11 @@ export const Login = () => {
               px={2}
               py={1}
               component={Input}
+              name="email"
               disableUnderline
               placeholder="Имэйл хаягаа оруулна уу"
+              value={email}
+              onChange={handleEmailChange}
             ></Box>
           </Stack>
           <Stack gap={0.5}>
@@ -63,6 +81,8 @@ export const Login = () => {
               placeholder="Нууц үг"
               id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -90,9 +110,15 @@ export const Login = () => {
       </Stack>
       <Stack alignItems={"center"} gap={4}>
         <Button
+          sx={{
+            bgcolor: buttonColor,
+            color: buttonColor == "gray" ? "rgba(28, 32, 36, 0.24)" : "white",
+            width: "384px",
+            height: "48px",
+          }}
+          disabled={!email}
           variant="contained"
-          disabled
-          sx={{ width: "384px", height: "48px" }}
+          disableRipple
         >
           Нэвтрэх
         </Button>
@@ -108,6 +134,7 @@ export const Login = () => {
           justifyContent={"center"}
           borderColor={"#18BA51"}
           color={"#272727"}
+          sx={{ cursor: "pointer" }}
         >
           Бүртгүүлэх
         </Stack>

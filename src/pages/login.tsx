@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 
 const Page = () => {
   return (
-    <Stack justifyContent={"center"} alignItems={"center"}>
+    <Stack height={"750px"} justifyContent={"center"} alignItems={"center"}>
       <Login />
     </Stack>
   );

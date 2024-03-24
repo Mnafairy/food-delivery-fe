@@ -1,17 +1,11 @@
 import { Box, Container, Stack, Typography, Link } from "@mui/material";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  Logo,
-  TwitterIcon,
-  FooterBg,
-} from "../icons";
+import { FacebookIcon, InstagramIcon, Logo, TwitterIcon } from "../icons";
 export const Footer = () => (
   <Box
     width="100%"
     height={545}
     bgcolor={"#18BA51"}
-    sx={{ backgroundImage: "bgFood.svg" }}
+    sx={{ backgroundImage: "url(/bgFood.svg)" }}
     position={"relative"}
   >
     <Container>
