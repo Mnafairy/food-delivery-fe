@@ -123,21 +123,23 @@ export const Login = () => {
           Нэвтрэх
         </Button>
         <Typography color={"#272727"}>Эсвэл</Typography>
-        <Stack
-          height={"48px"}
-          width={"384px"}
-          px={2}
-          py={1}
-          border={1}
-          borderRadius={1}
-          alignItems={"center"}
-          justifyContent={"center"}
-          borderColor={"#18BA51"}
-          color={"#272727"}
-          sx={{ cursor: "pointer" }}
-        >
-          Бүртгүүлэх
-        </Stack>
+        <Link href="/signup" style={{ textDecoration: "none" }}>
+          <Stack
+            height={"48px"}
+            width={"384px"}
+            px={2}
+            py={1}
+            border={1}
+            borderRadius={1}
+            alignItems={"center"}
+            justifyContent={"center"}
+            borderColor={"#18BA51"}
+            color={"#272727"}
+            sx={{ cursor: "pointer" }}
+          >
+            Бүртгүүлэх
+          </Stack>
+        </Link>
       </Stack>
     </Stack>
   );

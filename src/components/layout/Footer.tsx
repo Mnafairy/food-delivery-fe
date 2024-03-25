@@ -5,7 +5,7 @@ export const Footer = () => (
     width="100%"
     height={545}
     bgcolor={"#18BA51"}
-    sx={{ backgroundImage: "url(/bgFood.svg)" }}
+    sx={{ backgroundImage: "url(/footerBg.svg)" }}
     position={"relative"}
   >
     <Container>

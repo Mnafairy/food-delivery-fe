@@ -1,5 +1,6 @@
+import { Home } from "@/components/home";
 import Head from "next/head";
-const Home = () => {
+const Page = () => {
   return (
     <>
       <Head>
@@ -9,8 +10,9 @@ const Home = () => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <main>
+        <Home />
       </main>
     </>
   );
 };
-export default Home;
+export default Page;
