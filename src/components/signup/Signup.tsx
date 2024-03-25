@@ -31,7 +31,7 @@ export const Signup = () => {
         Бүртгүүлэх
       </Typography>
       <Stack gap={2} width={"384px"}>
-        <FormGroup>
+        <FormGroup >
           <FormControl>
             <Typography fontSize={"14px"}>Нэр</Typography>
             <TextField

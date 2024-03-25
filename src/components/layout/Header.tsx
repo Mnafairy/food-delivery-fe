@@ -76,7 +76,7 @@ export const Header = () => {
     <Container>
       <Stack alignItems={"center"} justifyItems={"center"}>
         <Stack
-          width="1258px"
+          width="1200px"
           height="57px"
           direction="row"
           px={3}
