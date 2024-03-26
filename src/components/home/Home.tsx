@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { BookIcon, ClockIcon, VeggieIcon } from "../icons/home";
-
+import { FoodCard } from "../cards";
 export const Home = () => {
   const info = [
     {
@@ -103,7 +103,9 @@ export const Home = () => {
           ))}
         </Stack>
 
-        <Stack>2</Stack>
+        <Stack>
+          <FoodCard />
+        </Stack>
       </Container>
     </Stack>
   );
