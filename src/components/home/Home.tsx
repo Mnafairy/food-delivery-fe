@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { BookIcon, ClockIcon, VeggieIcon } from "../icons/home";
-import { FoodCard } from "../cards";
+import { HomeCategoryTab } from "./HomeCategoryTab";
 export const Home = () => {
   const info = [
     {
@@ -26,7 +26,7 @@ export const Home = () => {
     },
   ];
   return (
-    <Stack width={"full"}>
+    <Stack width={"full"} mb={"80px"}>
       <Box bgcolor={"#18BA51"} sx={{ backgroundImage: "url(/footerBg.svg)" }}>
         <Container>
           <Stack
@@ -71,12 +71,7 @@ export const Home = () => {
         </Container>
       </Box>
       <Container>
-        <Stack
-          width={"1200px"}
-          direction={"row"}
-          justifyContent={"space-between"}
-          my={"122px"}
-        >
+        <Stack direction={"row"} justifyContent={"space-between"} my={"122px"}>
           {info.map((e, index) => (
             <Stack
               width={"265px"}
@@ -102,11 +97,10 @@ export const Home = () => {
             </Stack>
           ))}
         </Stack>
-
-        <Stack>
-          <FoodCard />
-        </Stack>
       </Container>
+      <Stack gap={"80px"}>
+        <HomeCategoryTab />
+      </Stack>
     </Stack>
   );
 };
