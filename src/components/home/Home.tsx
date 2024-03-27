@@ -25,6 +25,7 @@ export const Home = () => {
       desc: "Захиалга бэлтгэлийн явцыг хянах",
     },
   ];
+
   return (
     <Stack width={"full"} mb={"80px"}>
       <Box bgcolor={"#18BA51"} sx={{ backgroundImage: "url(/footerBg.svg)" }}>
@@ -99,7 +100,9 @@ export const Home = () => {
         </Stack>
       </Container>
       <Stack gap={"80px"}>
-        <HomeCategoryTab />
+        <HomeCategoryTab category={"Main Dish"} link />
+        <HomeCategoryTab category={"Breakfast"} />
+        <HomeCategoryTab category={"Dessert"} />
       </Stack>
     </Stack>
   );
