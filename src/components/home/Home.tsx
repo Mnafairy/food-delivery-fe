@@ -100,7 +100,9 @@ export const Home = () => {
         </Stack>
       </Container>
       <Stack gap={"80px"}>
-        <HomeCategoryTab category={"Main Dish"} link />
+        <HomeCategoryTab category={"Sale"} />
+        <HomeCategoryTab category={"Main Dish"} />
+        <HomeCategoryTab category={"Salads and Appetizers"} />
         <HomeCategoryTab category={"Breakfast"} />
         <HomeCategoryTab category={"Dessert"} />
       </Stack>

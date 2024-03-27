@@ -1,7 +1,10 @@
-import { FoodCard } from "@/components/cards";
-import { Box, Stack } from "@mui/material";
+import { Menu } from "@/components/menu/Menu";
 
 const Page = () => {
-  return <Stack flexWrap={"wrap"}></Stack>;
+  return (
+    <>
+      <Menu />
+    </>
+  );
 };
 export default Page;

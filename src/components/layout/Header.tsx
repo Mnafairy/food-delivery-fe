@@ -1,6 +1,13 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import { Box, Container, InputBase, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  InputBase,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Logo, SearchIcon, BasketIcon, ProfileIcon } from "../icons";
 import { useState } from "react";
 const Search = styled("div")(({ theme }) => ({
@@ -17,7 +24,6 @@ const Search = styled("div")(({ theme }) => ({
     width: "auto",
   },
 }));
-
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -27,7 +33,6 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   width: "100%",
@@ -49,14 +54,17 @@ export const Header = () => {
     {
       id: 1,
       title: "НҮҮР",
+      link: "/",
     },
     {
       id: 2,
       title: "ХООЛНЫ ЦЭС",
+      link: "/menu",
     },
     {
       id: 3,
       title: "ХҮРГЭЛТИЙН БҮС",
+      link: "/deliveryzone",
     },
   ];
   const menuRight = [
@@ -96,20 +104,21 @@ export const Header = () => {
               justifyItems={"center"}
             >
               {menu.map((e, key) => (
-                <Typography
-                  fontSize="14px"
-                  fontWeight={700}
-                  px={2}
-                  py={1}
-                  key={key}
-                  onClick={() => handleSubmit(e.id)}
-                  sx={{
-                    color: active === e.id ? "#18BA51" : "black",
-                    cursor: "pointer",
-                  }}
-                >
-                  {e.title}
-                </Typography>
+                <Link key={key} href={e.link} underline="none">
+                  <Typography
+                    fontSize="14px"
+                    fontWeight={700}
+                    px={2}
+                    py={1}
+                    onClick={() => handleSubmit(e.id)}
+                    sx={{
+                      color: active === e.id ? "#18BA51" : "black",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {e.title}
+                  </Typography>
+                </Link>
               ))}
             </Stack>
           </Stack>
@@ -119,10 +128,7 @@ export const Header = () => {
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Хайх"
-                  // inputProps={{ "aria-label": "search" }}
-                />
+                <StyledInputBase placeholder="Хайх" />
               </Search>
             </Box>
             {menuRight.map((e, index) => (

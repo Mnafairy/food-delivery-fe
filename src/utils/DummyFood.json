@@ -22,7 +22,7 @@
   {
     "id": 3,
     "category": "Main Dish",
-    "foodName": "Breakfast",
+    "foodName": "Cereal",
     "price": 14800,
     "imagePath": " https://s3-alpha-sig.figma.com/img/27cb/2c3b/60df84dc4dd7d808ba224aff01eeb6d8?Expires=1712534400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=apwP4dbOfKnGEp54UuOvwW5np6OowqaXEGyyWfk8IcB3j0okIMkH4kHXrFVLjy1ABOISKi50P3nXX9fNJtYDdLb70Sc5qSNLDv3sZZEe8U7FLs9c7-liCTqrdVZY0Q5LkG-~IWs-3HQaixWqeokAxImOz-GAlyOzl6ldSYhGxNlKukj8HB12h~8JKBycM4~vHGJ54hwrWvcTCpzi8r7jwHdY0Q6fAk3aAo0l-UqCWNRSKGhn80qt5MRlfRrHb6E3OgTIigyWHy~o3vWrLfnJLXMDZe2~epXRUK7U9Ix1oosyqSnRQjW7qa9TCxgzrAfF8ecskBfcb7WQyrb4K8rRgw__",
     "ingredients": ["Eggs", "Bread", "Butter", "Jam"],
