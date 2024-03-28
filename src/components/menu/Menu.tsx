@@ -1,12 +1,13 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
-import foodData from "../../utils/DummyFood.json";
 import { CardModal } from "../cards/CardModal";
 import { useState } from "react";
+import { useFoodData } from "@/context/FoodContext";
 export const Menu = () => {
+  const { foodData } = useFoodData();
   const [menu, setMenu] = useState("Breakfast");
-  const menuHandler = (e: string) => {
-    setMenu(e);
-  };
+  // const menuHandler = (e: string) => {
+  //   setMenu(e);
+  // };
   const buttonStyle = (category: string) => ({
     "&.MuiButtonBase-root:hover": {
       backgroundColor: menu === category ? "primary.main" : "white",
@@ -41,13 +42,13 @@ export const Menu = () => {
         justifyContent={"center"}
         gap={"26px"}
       >
-        {menuTitles.map((category) => (
+        {menuTitles.map((category, index) => (
           <Button
-            key={category}
+            key={index}
             disableRipple
             variant="contained"
             sx={buttonStyle(category)}
-            onClick={() => menuHandler(category)}
+            onClick={() => setMenu(category)}
           >
             <Typography
               fontSize={"16px"}

@@ -20,6 +20,14 @@ export const Login = () => {
   const [buttonColor, setButtonColor] = useState("gray");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+  const handleSubmit=()=>{
+    const data = {
+      email: email,
+      password: password,
+    };
+  }
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -28,6 +36,7 @@ export const Login = () => {
   ) => {
     event.preventDefault();
   };
+  console.log(email, password);
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
     setButtonColor(event.target.value ? "#18BA51" : "gray");

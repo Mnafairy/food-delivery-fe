@@ -1,13 +1,14 @@
 import { Container, Link, Stack, Typography } from "@mui/material";
 import { StarIcon } from "../icons/delivery";
 import { ArrowIcon } from "../icons/home/ArrowIcon";
-import foodData from "../../utils/DummyFood.json";
 import { CardModal } from "../cards/CardModal";
-//orj irsen datag category goor ni filterden
+import { useFoodData } from "@/context/FoodContext";
 export const HomeCategoryTab = ({ category }: { category: string }) => {
+  //orj irsen datag category goor ni filterden
   // console.log("FoodData:", foodData);
   // const filteredFoods = foodData.filter((item) => item.category == category);
   // console.log("filtered foods:", filteredFoods);
+  const { foodData } = useFoodData();
   return (
     <Container>
       <Stack justifyContent={"space-between"} gap={3}>

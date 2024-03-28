@@ -8,12 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+
 const CLOUD_NAME = "drpt056a0";
 const UPLOAD_PRESET = "dwbpiep4";
+
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
+
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+
   const [loading, setLoading] = useState<boolean>(false);
+
   const fileChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event?.target?.files) {
       setFile(event.target.files[0]);
