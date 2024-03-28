@@ -47,7 +47,7 @@ export const HomeCategoryTab = ({ category }: { category: string }) => {
               .filter((item) => item.category == category)
               .slice(0, 4)
               .map((data, index) => {
-                // console.log("data:",data)
+                // console.log("data:", data);
                 return <CardModal key={index} data={data} />;
               })}
           </Stack>

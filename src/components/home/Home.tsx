@@ -2,6 +2,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { BookIcon, ClockIcon, VeggieIcon } from "../icons/home";
 import { HomeCategoryTab } from "./HomeCategoryTab";
+import BasketDrawer from "../drawer/basketDrawer";
 export const Home = () => {
   const info = [
     {
@@ -99,6 +100,9 @@ export const Home = () => {
           ))}
         </Stack>
       </Container>
+      <>
+        <BasketDrawer />
+      </>
       <Stack gap={"80px"}>
         <HomeCategoryTab category={"Sale"} />
         <HomeCategoryTab category={"Main Dish"} />

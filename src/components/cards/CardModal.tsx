@@ -77,7 +77,10 @@ export const CardModal = ({ data }: { data: data }) => {
                 {data.foodName}
               </Typography>
               <Typography fontSize={"18px"} fontWeight={600} color={"#18BA51"}>
-                {data.price}₮
+                {data.sale == 0
+                  ? data.price
+                  : data.price - (data.price * data.sale) / 100}
+                ₮
               </Typography>
             </Stack>
             <Stack gap={"12px"}>
