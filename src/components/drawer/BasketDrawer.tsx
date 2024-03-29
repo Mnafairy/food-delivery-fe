@@ -1,15 +1,21 @@
+import {
+  Box,
+  Button,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { CartBadge } from "../layout/Header/CartBadge";
+import { LeftArrowIcon } from "../icons/drawer/LeftArrowIcon";
+import { DrawerCard } from "../cards/DrawerCard";
+
 export const BasketDrawer = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -18,14 +24,41 @@ export const BasketDrawer = () => {
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
+    <Stack
+      sx={{ width: 586 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <Stack
+        direction={"row"}
+        width={"538px"}
+        gap={"171px"}
+        alignItems={"center"}
+        mb={"30px"}
+      >
+        <Stack
+          px={"6px"}
+          py={"2px"}
+          width={"48px"}
+          height={"48px"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <LeftArrowIcon />
+        </Stack>
+        <Typography>Таны сагс</Typography>
+      </Stack>
+      <Divider />
+      <Stack>
+        <DrawerCard />
+      </Stack>
+      {/* <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon></ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
@@ -34,22 +67,23 @@ export const BasketDrawer = () => {
       <Divider />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon></ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
-    </Box>
+      </List> */}
+      <Typography>total price </Typography>
+    </Stack>
   );
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
+      <Button onClick={toggleDrawer(true)}>
+        <CartBadge />
+      </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

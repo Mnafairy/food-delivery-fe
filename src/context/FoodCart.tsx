@@ -25,7 +25,7 @@ export const FoodContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [foodData, setFoodData] = useState<FoodData[]>([]);
-  
+
   useEffect(() => {
     fetch("./DummyFood.json")
       .then((res) => res.json())
@@ -37,7 +37,7 @@ export const FoodContextProvider: React.FC<{ children: React.ReactNode }> = ({
       });
   }, []);
   // console.log("foodData:", foodData);
-  
+
   return (
     <FoodContext.Provider value={{ foodData, setFoodData }}>
       {children}

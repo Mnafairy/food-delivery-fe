@@ -8,6 +8,7 @@ export const Menu = () => {
   // const menuHandler = (e: string) => {
   //   setMenu(e);
   // };
+
   const buttonStyle = (category: string) => ({
     "&.MuiButtonBase-root:hover": {
       backgroundColor: menu === category ? "primary.main" : "white",
