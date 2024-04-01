@@ -12,22 +12,30 @@ import {
 import { useState } from "react";
 
 export const Login = () => {
-  // const handleSubmit = (e) => {
-  //   const login = {
-  //     email: e.target.email.value,
-  //   };
-  // };
   const [buttonColor, setButtonColor] = useState("gray");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-  const handleSubmit=()=>{
-    const data = {
-      email: email,
-      password: password,
-    };
-  }
+  const data = {
+    email,
+    password,
+  };
+  fetch("http://localhost:4000/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  // const handleSubmit = () => {
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   };
+  //   const FETCHED_DATA = await fetch("http://localhost:3000", options);
+  //   const FETCHED_JSON = await FETCHED_DATA.json();
+  // };
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -128,6 +136,7 @@ export const Login = () => {
           disabled={!email}
           variant="contained"
           disableRipple
+          // onClick={handleSubmit}
         >
           Нэвтрэх
         </Button>

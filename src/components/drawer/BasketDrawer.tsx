@@ -1,4 +1,4 @@
-import { Button, Divider, Drawer, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Drawer, Stack, Typography } from "@mui/material";
 import * as React from "react";
 import { CartBadge } from "../layout/Header/CartBadge";
 import { LeftArrowIcon } from "../icons/drawer/LeftArrowIcon";
