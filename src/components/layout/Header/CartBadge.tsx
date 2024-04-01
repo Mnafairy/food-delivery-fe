@@ -13,13 +13,13 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 export const CartBadge = () => {
   const { cartFoods } = useCartItems();
-  let sum = 0;
-  cartFoods.forEach((num) => {
-    sum += num.count;
-  });
+  // let sum = 0;
+  // cartFoods.forEach((num) => {
+  //   sum += num.count;
+  // });
   return (
     // <IconButton aria-label="cart">
-    <StyledBadge badgeContent={sum} color="primary">
+    <StyledBadge badgeContent={cartFoods.length} color="primary">
       <BasketIcon />
     </StyledBadge>
     // </IconButton>

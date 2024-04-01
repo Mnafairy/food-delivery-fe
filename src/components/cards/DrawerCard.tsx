@@ -1,13 +1,29 @@
 import { useCartItems } from "@/context/CartContext";
 import { Box, Button, CardMedia, Stack, Typography } from "@mui/material";
 
+const buttonStyle = {
+  maxWidth: "45px",
+  maxHeight: "40px",
+  minWidth: "45px",
+  minHeight: "40px",
+  color: "white",
+  borderRadius: "10px",
+};
 export const DrawerCard = () => {
   const { cartFoods } = useCartItems();
-  console.log("drawCard:", cartFoods);
+  // console.log("drawCard:", cartFoods);
   return (
     <Stack justifyContent={"center"} alignItems={"center"}>
       {cartFoods.map((data, index) => (
-        <Stack p={2} key={index} gap={2} direction={"row"} width={"538px"}>
+        <Stack
+          borderTop={1}
+          borderColor={"#D6D8DB"}
+          p={2}
+          key={index}
+          gap={2}
+          direction={"row"}
+          width={"538px"}
+        >
           <Box width={"50%"}>
             <CardMedia
               component="img"
@@ -17,14 +33,28 @@ export const DrawerCard = () => {
               alt="green iguana"
             />
           </Box>
-          <Stack width={"50%"}>
-            <Typography>{data.foodName}</Typography>
-            <Typography>{data.price}</Typography>
-            <Typography>{data.ingredients}</Typography>
-            <Stack direction={"row"}>
-              <Button>-</Button>
-              <Typography>{data.count}</Typography>
-              <Button>+</Button>
+          <Stack
+            justifyContent={"space-between"}
+            width={"50%"}
+            height={"150px"}
+          >
+            <Typography fontSize={"18px"} fontWeight={600}>
+              {data.foodName}
+            </Typography>
+            <Typography color={"#18BA51"} fontWeight={600} fontSize={"18px"}>
+              {data.price}₮
+            </Typography>
+            <Typography color={"#767676"}>{data.ingredients}</Typography>
+            <Stack gap={1} direction={"row"} alignItems={"center"}>
+              <Button sx={buttonStyle} variant="contained">
+                <Typography fontWeight={900}>-</Typography>
+              </Button>
+              <Typography py={1} px={"30px"} height={"40px"}>
+                {data.count}
+              </Typography>
+              <Button sx={buttonStyle} variant="contained">
+                <Typography fontWeight={900}>+</Typography>
+              </Button>
             </Stack>
           </Stack>
         </Stack>

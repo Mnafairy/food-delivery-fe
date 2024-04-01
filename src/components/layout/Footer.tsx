@@ -9,9 +9,6 @@ export const Footer = () => (
     position={"relative"}
   >
     <Container>
-      {/* <Stack position={"absolute"} left={330}>
-        <FooterBg />
-      </Stack> */}
       <Stack
         top={114}
         position={"absolute"}
@@ -35,19 +32,19 @@ export const Footer = () => (
           justifyContent={"space-between"}
           fontWeight={600}
         >
-          <Link href="#" underline="always" color={"#FFF"}>
+          <Link href="/" underline="always" color={"#FFF"}>
             Нүүр
           </Link>
           <Link href="#" underline="always" color={"#FFF"}>
             Холбоо барих
           </Link>
-          <Link href="#" underline="always" color={"#FFF"}>
+          <Link href="/menu" underline="always" color={"#FFF"}>
             Хоолны цэс
           </Link>
           <Link href="#" underline="always" color={"#FFF"}>
             Үйлчилгээний нөхцөл
           </Link>
-          <Link href="#" underline="always" color={"#FFF"}>
+          <Link href="/deliveryzone" underline="always" color={"#FFF"}>
             Хүргэлтийн бүс
           </Link>
           <Link href="#" underline="always" color={"#FFF"}>

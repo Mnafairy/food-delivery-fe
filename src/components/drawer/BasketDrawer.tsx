@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Drawer, Stack, Typography } from "@mui/material";
+import { Button, Drawer, Stack, Typography } from "@mui/material";
 import * as React from "react";
 import { CartBadge } from "../layout/Header/CartBadge";
 import { LeftArrowIcon } from "../icons/drawer/LeftArrowIcon";
@@ -18,47 +18,62 @@ export const BasketDrawer = () => {
   });
   const DrawerList = (
     <Stack
+      minHeight={"100vh"}
       sx={{ width: 586 }}
       role="presentation"
       onClick={toggleDrawer(false)}
-      justifyContent={"center"}
+      justifyContent={"space-between"}
       alignItems={"center"}
     >
-      <Stack
-        direction={"row"}
-        width={"538px"}
-        gap={"171px"}
-        alignItems={"center"}
-        mb={"30px"}
-      >
-        <Stack
-          px={"6px"}
-          py={"2px"}
-          width={"48px"}
-          height={"48px"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <LeftArrowIcon />
-        </Stack>
-        <Typography>Таны сагс</Typography>
-      </Stack>
-      <Divider />
       <Stack>
+        <Stack
+          direction={"row"}
+          width={"538px"}
+          gap={"171px"}
+          alignItems={"center"}
+          mb={"30px"}
+        >
+          <Stack
+            px={"6px"}
+            py={"2px"}
+            width={"48px"}
+            height={"48px"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <LeftArrowIcon />
+          </Stack>
+          <Typography fontSize={"20px"} fontWeight={900}>
+            Таны сагс
+          </Typography>
+        </Stack>
         <DrawerCard />
       </Stack>
       <Stack
+        borderTop={1}
+        borderColor={"#D6D8DB"}
         px={4}
         py={"10px"}
         width={"586px"}
+        height={"172px"}
         direction={"row"}
+        alignItems={"center"}
         justifyContent={"space-between"}
       >
         <Stack>
-          <Typography>Нийт төлөх дүн</Typography>
-          <Typography>{sum}</Typography>
+          <Typography color={"#5E6166"} fontSize={"18px"}>
+            Нийт төлөх дүн
+          </Typography>
+          <Typography fontSize={"18px"} fontWeight={700}>
+            {sum}₮
+          </Typography>
         </Stack>
-        <Button>Захиалах</Button>
+        <Button
+          variant="contained"
+          sx={{ color: "white", width: "256px", height: "48px" }}
+        >
+          Захиалах
+        </Button>
       </Stack>
     </Stack>
   );
