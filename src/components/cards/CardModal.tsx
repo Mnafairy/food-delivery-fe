@@ -8,6 +8,7 @@ import {
   Stack,
 } from "@mui/material";
 import { FoodCard } from ".";
+import { useCartItems } from "@/context/CartContext";
 interface data {
   id: number;
   category: string;
@@ -43,12 +44,32 @@ export const CardModal = ({ data }: { data: data }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [buyCount, setBuyCount] = React.useState(1);
+  const { cartFoods, setCartFoods } = useCartItems();
 
   const sumHandler = () => setBuyCount(buyCount + 1);
   const subHandler = () => {
     const newCount = buyCount - 1;
     newCount < 1 ? setBuyCount(1) : setBuyCount(newCount);
   };
+  const onSubmit = () => {
+    const cartData = {
+      id: data.id,
+      category: data.category,
+      foodName: data.foodName,
+      imagePath: data.imagePath,
+      ingredients: data.ingredients,
+      price: salePrice,
+      sale: data.sale,
+      stock: data.stock,
+      count: buyCount,
+    };
+    setCartFoods([...cartFoods, cartData]);
+    handleClose();
+  };
+  const salePrice =
+    data.sale == 0 ? data.price : data.price - (data.price * data.sale) / 100;
+
+  // console.log("cartData:", cartFoods);
   return (
     <>
       <Box onClick={handleOpen}>
@@ -110,7 +131,7 @@ export const CardModal = ({ data }: { data: data }) => {
               </Button>
             </Stack>
             <Button
-              onClick={handleClose}
+              onClick={onSubmit}
               disableRipple
               sx={{ color: "white" }}
               variant="contained"

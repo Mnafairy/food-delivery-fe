@@ -1,7 +1,7 @@
-import { IconButton, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { BasketIcon } from "@/components/icons";
-
+import { useCartItems } from "@/context/CartContext";
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -12,9 +12,14 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 export const CartBadge = () => {
+  const { cartFoods } = useCartItems();
+  let sum = 0;
+  cartFoods.forEach((num) => {
+    sum += num.count;
+  });
   return (
     // <IconButton aria-label="cart">
-    <StyledBadge badgeContent={4} color="primary">
+    <StyledBadge badgeContent={sum} color="primary">
       <BasketIcon />
     </StyledBadge>
     // </IconButton>

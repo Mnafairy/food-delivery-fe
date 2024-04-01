@@ -1,28 +1,21 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Button, Divider, Drawer, Stack, Typography } from "@mui/material";
 import * as React from "react";
 import { CartBadge } from "../layout/Header/CartBadge";
 import { LeftArrowIcon } from "../icons/drawer/LeftArrowIcon";
 import { DrawerCard } from "../cards/DrawerCard";
+import { useCartItems } from "@/context/CartContext";
 
 export const BasketDrawer = () => {
   const [open, setOpen] = React.useState(false);
+  const { cartFoods } = useCartItems();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-
+  let sum = 0;
+  cartFoods.forEach((num) => {
+    sum += num.price * num.count;
+  });
   const DrawerList = (
     <Stack
       sx={{ width: 586 }}
@@ -54,28 +47,19 @@ export const BasketDrawer = () => {
       <Stack>
         <DrawerCard />
       </Stack>
-      {/* <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
-      <Typography>total price </Typography>
+      <Stack
+        px={4}
+        py={"10px"}
+        width={"586px"}
+        direction={"row"}
+        justifyContent={"space-between"}
+      >
+        <Stack>
+          <Typography>Нийт төлөх дүн</Typography>
+          <Typography>{sum}</Typography>
+        </Stack>
+        <Button>Захиалах</Button>
+      </Stack>
     </Stack>
   );
 
