@@ -9,6 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export const Login = () => {
@@ -16,26 +17,39 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const data = {
-    email,
-    password,
-  };
-  fetch("http://localhost:4000/api/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  // const handleSubmit = () => {
-  //   const options = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   };
-  //   const FETCHED_DATA = await fetch("http://localhost:3000", options);
-  //   const FETCHED_JSON = await FETCHED_DATA.json();
+  // const data = {
+  //   email,
+  //   password,
   // };
+  // fetch("http://localhost:4000/api/login", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify(data),
+  // });
+  const router = useRouter();
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const login = {
+      email: email,
+      password: password,
+    };
+
+    const res = await fetch("http://localhost:4000/api/login", {
+      body: JSON.stringify(login),
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.token) {
+      localStorage.setItem("userToken", data.token);
+      router.push("/dashboard");
+    }
+  };
+
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -136,7 +150,7 @@ export const Login = () => {
           disabled={!email}
           variant="contained"
           disableRipple
-          // onClick={handleSubmit}
+          onClick={handleSubmit}
         >
           Нэвтрэх
         </Button>
