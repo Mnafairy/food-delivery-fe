@@ -21,13 +21,34 @@ export const Signup = () => {
   ) => {
     event.preventDefault();
   };
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const login = {
+      email: email,
+      password: password,
+    };
+
+    const res = await fetch("http://localhost:4000/api/register", {
+      body: JSON.stringify(login),
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.token) {
+      localStorage.setItem("userToken", data.token);
+    }
+  };
   return (
     <Stack p={4} width={"450px"} height={"720px"} alignItems={"center"} gap={6}>
       <Typography fontSize={"28px"} fontWeight={700} color={"#0D1118"}>
         Бүртгүүлэх
       </Typography>
       <Stack gap={2} width={"384px"}>
-        <FormGroup >
+        <FormGroup>
           <FormControl>
             <Typography fontSize={"14px"}>Нэр</Typography>
             <TextField
