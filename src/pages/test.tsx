@@ -18,7 +18,7 @@ const Page = () => {
       .then((res) => res.json())
       .then((data) => setFoodData(data));
   }, []);
-  console.log("foodData", foodData);
+  // console.log("foodData", foodData);
   const menuTitles = [
     { name: "Main Dish", id: "1" },
     { name: "Salads and Appetizers", id: "2" },
@@ -26,9 +26,9 @@ const Page = () => {
     { name: "Dessert", id: "4" },
   ];
   const [menu, setMenu] = useState<string>("Breakfast");
-  console.log("menu:", menu);
+  // console.log("menu:", menu);
   const filteredFoods = foodData.filter((data) => data.category == menu);
-  console.log("filteredFoods:", filteredFoods);
+  // console.log("filteredFoods:", filteredFoods);
   return (
     <Container>
       <Stack direction={"row"}>

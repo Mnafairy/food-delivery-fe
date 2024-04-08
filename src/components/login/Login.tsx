@@ -16,24 +16,14 @@ export const Login = () => {
   const [buttonColor, setButtonColor] = useState("gray");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // const data = {
-  //   email,
-  //   password,
-  // };
-  // fetch("http://localhost:4000/api/login", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
   const router = useRouter();
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const login = {
       email: email,
       password: password,
     };
-
     const res = await fetch("http://localhost:4000/api/login", {
       body: JSON.stringify(login),
       method: "POST",
@@ -51,14 +41,13 @@ export const Login = () => {
   };
 
   const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
-  console.log(email, password);
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
     setButtonColor(event.target.value ? "#18BA51" : "gray");
