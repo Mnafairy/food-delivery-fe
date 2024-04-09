@@ -24,6 +24,7 @@ const Page = () => {
       setFile(event.target.files[0]);
     }
   };
+
   const uploadHandler = async () => {
     if (file) {
       setLoading(true);
