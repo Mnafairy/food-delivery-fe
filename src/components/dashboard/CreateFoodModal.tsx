@@ -67,6 +67,7 @@ export const CreateFoodModal = () => {
     };
   };
 
+// category oo mapdaad option deer songolt bolgoj tavinaa 
   return (
     <div>
       <Button sx={{ color: "white" }} variant="contained" onClick={handleOpen}>
@@ -104,9 +105,11 @@ export const CreateFoodModal = () => {
               <TextField placeholder="Хямдралтай эсэх" id="sale" name="sale" />
               <Typography>Хоолны зураг</Typography>
               <Input onChange={fileChangeHandler} required type="file" />
-              <Button onClick={uploadHandler}>Add image</Button>
+              <Button variant="contained" onClick={uploadHandler}>
+                Add image
+              </Button>
               <Input
-                sx={{ width: "100px" }}
+                sx={{ width: "100px", height: "40px" }}
                 disableUnderline
                 type="submit"
                 value={"Continue"}

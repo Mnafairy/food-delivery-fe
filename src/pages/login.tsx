@@ -1,5 +1,4 @@
 import { Login } from "@/components/login";
-import { Login2 } from "@/components/login/Login2";
 import { Stack } from "@mui/material";
 
 const Page = () => {
