@@ -1,10 +1,22 @@
-import { IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import {
+  IconButton,
+  InputBase,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import React from "react";
-export const AdminCategory = ({ data }) => {
-  const options = ["None", "Atria"];
+import React, { useState } from "react";
+import { useCategory } from "@/context/CategoryContext";
+interface dataType {
+  _id: string;
+  name: string;
+}
+export const AdminCategory = ({ data }: { data: dataType }) => {
+  const { category, setCategory } = useCategory();
+  const [catName, setCatName] = useState<string>(data.name);
   const ITEM_HEIGHT = 48;
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -13,6 +25,42 @@ export const AdminCategory = ({ data }) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleDelete = async (e: React.MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    const deleteData = {
+      id: data._id,
+    };
+    await fetch("http://localhost:4000/api/category", {
+      body: JSON.stringify(deleteData),
+      method: "Delete",
+      mode: "cors",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
+    const newData = category?.filter((b) => b._id !== data._id);
+    setCategory(newData);
+    handleClose();
+  };
+
+  const handleUpdate = async (e: React.MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    const updateData = {
+      id: data._id,
+      updateInfo: catName,
+    };
+    await fetch("http://localhost:4000/api/category", {
+      body: JSON.stringify(updateData),
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    handleClose();
   };
   return (
     <Stack
@@ -57,15 +105,15 @@ export const AdminCategory = ({ data }) => {
             },
           }}
         >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              selected={option === "Pyxis"}
-              onClick={handleClose}
-            >
-              {option}
-            </MenuItem>
-          ))}
+          <MenuItem onClick={handleDelete}>Delete category</MenuItem>
+          <MenuItem>
+            <InputBase
+              placeholder={"Write new category name"}
+              value={catName}
+              onChange={(e) => setCatName(e.target.value)}
+            ></InputBase>
+          </MenuItem>
+          <MenuItem onClick={handleUpdate}>Edit name</MenuItem>
         </Menu>
       </div>
     </Stack>

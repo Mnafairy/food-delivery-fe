@@ -1,6 +1,5 @@
 import { Stack, Typography } from "@mui/material";
 import { CreateFoodModal } from "./CreateFoodModal";
-import { AdminCard } from "./AdminCard";
 
 export const AdminMenu = () => {
   //all food deeree food.filter((e)=>e.category==category).map((e)=><AdminCard data={e}/>)

@@ -57,17 +57,26 @@ export const CreateFoodModal = () => {
   };
 
   const handleSubmit = async (e: any) => {
+    e.preventDefault();
     const newFood = {
-      name: e.target.name.value,
+      foodName: e.target.name.value,
       category: e.target.category.value,
       ingredients: e.target.ingredients.value,
       price: e.target.price.value,
       sale: e.target.sale.value,
-      imageUrl: imageUrl,
+      imagePath: imageUrl,
     };
+    await fetch("http://localhost:4000/api/category", {
+      body: JSON.stringify(newFood),
+      method: "POST",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
   };
 
-// category oo mapdaad option deer songolt bolgoj tavinaa 
+  // category oo mapdaad option deer songolt bolgoj tavinaa
   return (
     <div>
       <Button sx={{ color: "white" }} variant="contained" onClick={handleOpen}>

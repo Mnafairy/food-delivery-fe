@@ -16,18 +16,17 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-interface dataType {
-  _id: string;
-  name: string;
-}
+// interface dataType {
+//   _id: string;
+//   name: string;
+// }
 export const CreateCategory = () => {
   const { category, setCategory } = useCategory();
+  const [newCategory, setNewCategory] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
-  const [newCategory, setNewCategory] = useState("");
-  // console.log("category", newCategory);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = {
