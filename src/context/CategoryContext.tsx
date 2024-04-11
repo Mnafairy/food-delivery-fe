@@ -3,7 +3,6 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 interface Category {
   name: string;
   _id: string;
-  __v: number;
 }
 
 interface CategoryContextType {

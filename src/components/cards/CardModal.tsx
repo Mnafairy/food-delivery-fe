@@ -51,6 +51,10 @@ export const CardModal = ({ data }: { data: data }) => {
     const newCount = buyCount - 1;
     newCount < 1 ? setBuyCount(1) : setBuyCount(newCount);
   };
+  // const orderData = [
+  //   { id: id, cartData: cartData, userId: userId, adress: adress },
+  // ];
+
   const onSubmit = () => {
     const cartData = {
       id: data.id,
@@ -66,6 +70,7 @@ export const CardModal = ({ data }: { data: data }) => {
     setCartFoods([...cartFoods, cartData]);
     handleClose();
   };
+  
   const salePrice =
     data.sale == 0 ? data.price : data.price - (data.price * data.sale) / 100;
 

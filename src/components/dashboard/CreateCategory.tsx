@@ -41,6 +41,7 @@ export const CreateCategory = () => {
       },
     });
     setCategory([...category, data]);
+    setNewCategory("");
   };
 
   return (
