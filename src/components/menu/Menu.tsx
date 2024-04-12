@@ -5,9 +5,11 @@ import { useFoodData } from "@/context/FoodContext";
 export const Menu = () => {
   const { foodData } = useFoodData();
   const [menu, setMenu] = useState("Breakfast");
+
   // const menuHandler = (e: string) => {
   //   setMenu(e);
   // };
+  console.log("foodData:", foodData);
 
   const buttonStyle = (category: string) => ({
     "&.MuiButtonBase-root:hover": {
@@ -32,7 +34,7 @@ export const Menu = () => {
   const menuTitles = [
     "Breakfast",
     "Salads and Appetizers",
-    "Main Dish",
+    "Main dish",
     "Dessert",
   ];
   return (
@@ -64,7 +66,7 @@ export const Menu = () => {
       <Stack mt={"54px"} mb={"80px"} gap={"60px"}>
         <Stack gap={3} direction={"row"} flexWrap={"wrap"}>
           {foodData
-            .filter((item) => item.category == menu)
+            .filter((item) => item.category.name == menu)
             .map((data, index) => (
               <CardModal key={index} data={data} />
             ))}

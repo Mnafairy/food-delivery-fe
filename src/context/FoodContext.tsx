@@ -45,8 +45,7 @@ export const FoodContextProvider: React.FC<{ children: React.ReactNode }> = ({
     };
     fetchData()
   }, []);
-  // console.log("foodData:", foodData);
-
+  
   return (
     <FoodContext.Provider value={{ foodData, setFoodData }}>
       {children}
